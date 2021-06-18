@@ -45,6 +45,16 @@ describe('demo routes', () => {
 
     const res = await request(app).get('/api/v1/orders');
     expect(res.body).toEqual([order1, order2, order3]);
+  });
+
+  test('deletes cat1', async () => {
+    const order1 = await Order.insert({
+      quantity: 10
+    });
+
+    const res = await request(app).delete(`/api/v1/orders/${order1.id}`);
+
+    expect(res.body).toEqual(order1);
 
   });
 
