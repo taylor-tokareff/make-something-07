@@ -18,4 +18,16 @@ describe('demo routes', () => {
   }
   );
 
+  test('find an order by id via Get route', async () => {
+    const order = await order.insert({
+      quantity: 420
+    });
+
+    const res = await request(app.get)(`/api/v1/orders/${order.id}`);
+
+    expect(res.body).toEqual(order);
+
+  }
+  )
+
 });
