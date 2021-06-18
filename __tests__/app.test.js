@@ -31,4 +31,21 @@ describe('demo routes', () => {
   }
   );
 
+  test('finds all orders via GET route', async () => {
+
+    const order1 = await Order.insert({
+      quantity: 10
+    });
+    const order2 = await Order.insert({
+      quantity: 5
+    });
+    const order3 = await Order.insert({
+      quantity: 4
+    });
+
+    const res = await request(app.get('/api/v1/orders'));
+    expect(res.body).toEqual([order1, order2, order3]);
+
+  });
+
 });
