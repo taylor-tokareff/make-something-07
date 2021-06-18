@@ -67,7 +67,10 @@ describe('demo routes', () => {
     });
 
     const res = await request(app).put(`/api/v1/orders/${order1.id}`).send(order2);
-    expect(res.body).toEqual(order2);
+    expect(res.body).toEqual({
+      id: '1',
+      quantity: 5
+    });
   });
 
 });
