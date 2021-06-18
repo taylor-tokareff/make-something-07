@@ -58,4 +58,16 @@ describe('demo routes', () => {
 
   });
 
+  test('it updates an order', async () => {
+    const order1 = await Order.insert({
+      quantity: 10
+    });
+    const order2 = await Order.insert({
+      quantity: 5
+    });
+
+    const res = await request(app).put(`/api/v1/orders/${order1.id}`).send(order2);
+    expect(res.body).toEqual(order2);
+  });
+
 });
