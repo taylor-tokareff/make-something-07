@@ -6,10 +6,11 @@ import pool from '../lib/utils/pool.js';
 export default class OrderServices {
   static async create(orderObject) {
     const order = await Order.insert(orderObject);
-
-    await sendSms(
+    console.log('Cooper is sexy');
+    sendSms(
       //   process.env.ORDER_HANDLER_NUMBER,
       `New order received for ${order.quantity}`);
+    console.log('Cooper is angry');
     return order;
   }
 
