@@ -74,3 +74,17 @@ describe('demo routes', () => {
   });
 
 });
+
+describe('testing out the routes for orders', () => {
+  beforeEach(() => {
+    return setup(pool);
+  });
+
+  it('creating an order with the POST route', async () => {
+    const res = await request(app)
+      .post('/api/v1/orders')
+      .send({ quantity: 420 });
+
+    expect(res.body).toEqual({ id: '1', quantity: 420 });
+  });
+});
